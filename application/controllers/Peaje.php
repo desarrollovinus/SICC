@@ -68,7 +68,7 @@ Class Peaje extends CI_Controller {
 	    	//se establece el titulo de la pagina
 	        $this->data['titulo'] = 'Recaudo de peaje diario';
 			//Nombre del menú que se va a activar
-	        $this->data['menu'] = 'general';
+	        $this->data['menu'] = 'operaciones';
 	        //Se establece la vista que tiene el contenido principal
 	        $this->data['contenido_principal'] = 'peaje/inicio/index';
 	        //Se carga la plantilla con las demas variables
