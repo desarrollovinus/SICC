@@ -11,10 +11,10 @@ Class Peaje extends CI_Controller {
 	    /**
 	    * Función constructora de la clase. Esta función se encarga de verificar que se haya
 	    * iniciado sesión. si no se ha iniciado, inmediatamente redirecciona
-	    * 
-	    * Se hereda el mismo constructor de la clase para evitar sobreescribirlo y de esa manera 
+	    *
+	    * Se hereda el mismo constructor de la clase para evitar sobreescribirlo y de esa manera
 	    * conservar el funcionamiento de controlador.
-	    * 
+	    *
 	    * @access   public
 	    */
 		function __construct() {
@@ -40,7 +40,7 @@ Class Peaje extends CI_Controller {
 
     /**
      * Carga los datos según el tipo
-     * @return void 
+     * @return void
      */
     function cargar()
     {
@@ -74,6 +74,51 @@ Class Peaje extends CI_Controller {
 	        //Se carga la plantilla con las demas variables
 	        $this->load->view('core/template', $this->data);
     } // recaudo_diario
+
+	function leer_excel()
+	{
+		$archivo = './archivos/peajes/recaudos/RIDYM Trapiche  1610.xlsx';
+		$tipo = 'Excel2007';
+		$Reader = PHPExcel_IOFactory::createReader($tipo);
+		$objPHPExcel = $Reader->load($archivo);
+		$data = array();
+		$contador = "1";
+		while (TRUE) {
+			if ($contador < 10) {
+				$contador = '0'.$contador;
+			}
+
+			try {
+				$hoja = $objPHPExcel->setActiveSheetIndexbyName('INF '.$contador);
+			} catch (Exception $e) {
+				break;
+			}
+
+			$pagados = $hoja->getCell('B44')->getCalculatedValue();
+			if (!$pagados) {
+				break;
+			}
+
+			$sin_pagar = $hoja->getCell('I44')->getCalculatedValue() - $pagados;
+			$total_recaudo = $hoja->getCell('D46')->getCalculatedValue();
+			$total_sobretasa = $hoja->getCell('J44')->getCalculatedValue();
+
+			$dataTemp = array(
+				'Peaje' => 'trapiche',
+				'Fecha' => '2016-10-'.$contador,
+				'pagados' => $pagados,
+				'sin_pagar' => $sin_pagar,
+				'total_recaudo' => $total_recaudo,
+				'total_sobretasa' => $total_sobretasa
+			);
+
+			array_push($data, $dataTemp);
+			$contador++;
+		}
+		echo "<pre>";
+		var_dump($data);
+		$this->peaje_model->actualizar($data);
+	}// leer excel
 }
 /* Fin del archivo Peaje.php */
 /* Ubicación: ./application/controllers/Peaje.php */

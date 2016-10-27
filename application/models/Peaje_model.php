@@ -1,15 +1,15 @@
 <?php
 /**
  * Modelo encargado de gestionar toda la informacion de peajes
- * 
+ *
  * @author              John Arley Cano Salinas (johnarleycano@hotmail.com)
  * @copyright           CONCESIÓN VIAL VÍAS DEL NUS S.A.S.
  */
 Class Peaje_model extends CI_Model{
 	/**
-    * Función constructora de la clase. Se hereda el mismo constructor de la clase para evitar sobreescribirlo y de esa manera 
+    * Función constructora de la clase. Se hereda el mismo constructor de la clase para evitar sobreescribirlo y de esa manera
     * conservar el funcionamiento de controlador.
-    * 
+    *
     * @access   public
     */
     function __construct() {
@@ -57,11 +57,11 @@ Class Peaje_model extends CI_Model{
 			// Tráfico del día
 			case 'trafico_acumulado':
 				$dia = "";
-				
+
 				if (isset($id["dia"])) {
 					$dia = "AND DAY(r.Fecha) = {$id['dia']}";
 				}
-				
+
 				$sql =
 				"SELECT
 					SUM(r.pagados) Trafico_Acumulado,
@@ -78,6 +78,14 @@ Class Peaje_model extends CI_Model{
 			break; // Tráfico del día
 		} // switch
 	} // cargar
+
+	// funcion para actualizar informacion del peaje
+	function actualizar($data)
+	{
+		$this->db_peajes->where('Peaje', $data[0]['Peaje']);
+		$this->db_peajes->delete('recaudos');
+		$this->db_peajes->insert_batch('recaudos', $data);
+	}
 }
 /* Fin del archivo Peaje_model.php */
 /* Ubicación: ./application/models/Peaje_model.php */
