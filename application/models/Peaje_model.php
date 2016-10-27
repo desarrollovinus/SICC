@@ -53,6 +53,29 @@ Class Peaje_model extends CI_Model{
 				// Retorno
 		        return $this->db_peajes->query($sql)->result();
 			break; // Días del mes
+
+			// Tráfico del día
+			case 'trafico_acumulado':
+				$dia = "";
+				
+				if (isset($id["dia"])) {
+					$dia = "AND DAY(r.Fecha) = {$id['dia']}";
+				}
+				
+				$sql =
+				"SELECT
+					SUM(r.pagados) Trafico_Acumulado,
+					SUM(r.total_recaudo) Recaudo_Acumulado
+				FROM
+					recaudos AS r
+				WHERE
+					YEAR (r.Fecha) = {$id['anio']}
+				AND MONTH (r.Fecha) = {$id['mes']}
+				AND r.Peaje = '{$id['peaje']}'
+				$dia";
+
+		        return $this->db_peajes->query($sql)->row();
+			break; // Tráfico del día
 		} // switch
 	} // cargar
 }

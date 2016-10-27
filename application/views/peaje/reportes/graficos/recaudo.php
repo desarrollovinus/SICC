@@ -1,41 +1,33 @@
 <!-- Contenedor de recaudo -->
-<div id="recaudo"></div>
+<div id="recaudo<?php echo $peaje; ?>"></div>
 
 <script type="text/javascript">
 	$(function () {
 		// Arreglos de datos
-		// Se consultan los días
-		var dias2 = ajax("<?php echo site_url('peaje/cargar'); ?>", {"tipo": "dias_mes", "anio": "<?php echo date('Y'); ?>", "mes": "<?php echo date('m') ?>", "peaje": "<?php echo $peaje; ?>"}, "JSON");
+		var datos = ajax("<?php echo site_url('peaje/cargar'); ?>", {"tipo": "dias_mes", "anio": "<?php echo date('Y'); ?>", "mes": "<?php echo date('m') ?>", "peaje": "<?php echo $peaje; ?>"}, "JSON");
+		
+		// Arreglos vacíos
 		var dias = [];
 		var recaudo = [];
 		var sobretasa = [];
 
-		$.each(dias2.respuesta, function(key, val){
+		// Se recorren los registros
+		$.each(datos.respuesta, function(key, val){
+			// Se almacenan en los arreglos
             dias.push(val.Dia)
             recaudo.push(parseFloat(val.total_recaudo))
             sobretasa.push( parseFloat(val.total_sobretasa))
         })//Fin each
 		
-
-		$('#recaudo').highcharts({
+		// Se ejecuta el gráfico
+		$('#recaudo<?php echo $peaje; ?>').highcharts({
 		    title: {
-		        text: '<?php echo $peaje ?>'
+		        text: 'Recaudo (pesos)'
 		    },
 		    xAxis: {
 		    	// Arreglo de los días
 		        categories: dias
-		        // categories: ['01', '02', '03', '04', '05']
-		    }/*,
-		    labels: {
-		        items: [{
-		            html: 'Total recaudo / sobretasa',
-		            style: {
-		                left: '50px',
-		                top: '18px',
-		                color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-		            }
-		        }]
-		    }*/,
+		    },
 		    // Arreglo con las columnas y sus valores
 		    series: [{
 		        type: 'column',
