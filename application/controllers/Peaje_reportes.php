@@ -44,7 +44,7 @@ Class Peaje_reportes extends CI_Controller {
                 // Trabla de tráfico y recaudos
                 case 'tabla':
                     //Se carga la vista que contiene el reporte
-                    $this->load->view('peaje/reportes/graficos/tabla');
+                    $this->load->view('peajes/reportes/graficos/tabla');
                 break; // Trabla de tráfico y recaudos
 
                 // Tráfico
@@ -53,7 +53,7 @@ Class Peaje_reportes extends CI_Controller {
                     $this->data['peaje'] = $this->input->post("peaje");
 
                     //Se carga la vista que contiene el reporte
-                    $this->load->view('peaje/reportes/graficos/trafico', $this->data);
+                    $this->load->view('peajes/reportes/graficos/trafico', $this->data);
                 break; // Tráfico
 
                 // Recaudo
@@ -62,45 +62,8 @@ Class Peaje_reportes extends CI_Controller {
                     $this->data['peaje'] = $this->input->post("peaje");
 
                     //Se carga la vista que contiene el reporte
-                    $this->load->view('peaje/reportes/graficos/recaudo', $this->data);
+                    $this->load->view('peajes/reportes/graficos/recaudo', $this->data);
                 break; // Recaudo
-
-                // // Tráfico
-                // case 'trafico_trapiche':
-                //     // Variables por post
-                //     $this->data['peaje'] = "trapiche";
-
-                //     //Se carga la vista que contiene el reporte
-                //     $this->load->view('peaje/reportes/graficos/trafico', $this->data);
-                // break; // Tráfico
-
-                // // Recaudo
-                // case 'recaudo_trapiche':
-                //     // Variables por post
-                //     $this->data['peaje'] = "trapiche";
-
-                //     //Se carga la vista que contiene el reporte
-                //     $this->load->view('peaje/reportes/graficos/recaudo', $this->data);
-                // break; // Recaudo
-
-
-                // // Tráfico
-                // case 'trafico_cabildo':
-                //     // Variables por post
-                //     $this->data['peaje'] = "cabildo";
-
-                //     //Se carga la vista que contiene el reporte
-                //     $this->load->view('peaje/reportes/graficos/trafico', $this->data);
-                // break; // Tráfico
-
-                // // Recaudo
-                // case 'recaudo_cabildo':
-                //     // Variables por post
-                //     $this->data['peaje'] = "cabildo";
-
-                //     //Se carga la vista que contiene el reporte
-                //     $this->load->view('peaje/reportes/graficos/recaudo', $this->data);
-                // break; // Recaudo
             } // switch tipo
         }else{
             //Si la peticion fue hecha mediante navegador, se redirecciona a la pagina de inicio

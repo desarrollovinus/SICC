@@ -12,16 +12,16 @@
 		<tbody>
 			<?php
 			// Niquía
-			$niquia_acumulado = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "niquia", "anio" => date("Y"), "mes" => date("m")));
-			$niquia_dia = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "niquia", "anio" => date("Y"), "mes" => date("m"), "dia" => date("d")-1));
+			$niquia_acumulado = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "Niquia"));
+			$niquia_dia = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "Niquia", "dia" => true));
 			
 			// Trapiche
-			$trapiche_acumulado = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "trapiche", "anio" => date("Y"), "mes" => date("m")));
-			$trapiche_dia = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "trapiche", "anio" => date("Y"), "mes" => date("m"), "dia" => date("d")-1));
+			$trapiche_acumulado = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "Trapiche"));
+			$trapiche_dia = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "Trapiche", "dia" => true));
 			
 			// Cabildo
-			$cabildo_acumulado = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "cabildo", "anio" => date("Y"), "mes" => date("m")));
-			$cabildo_dia = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "cabildo", "anio" => date("Y"), "mes" => date("m"), "dia" => date("d")-1));
+			$cabildo_acumulado = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "Cabildo", "anio" => date("Y"), "mes" => date("m")));
+			$cabildo_dia = $this->peaje_model->cargar("trafico_acumulado", array("peaje" => "Cabildo", "dia" => true));
 			?>
 
 			<tr>

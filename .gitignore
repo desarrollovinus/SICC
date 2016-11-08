@@ -4,6 +4,7 @@
 */cache/*
 !*/cache/index.html
 !*/cache/.htaccess
+/archivos/peajes/recaudos/*
 
 # =========================
 # Operating System Files
@@ -55,3 +56,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+application/controllers/Peaje.php

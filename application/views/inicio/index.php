@@ -7,13 +7,24 @@
 	<!-- Operaciones -->
 	<div class="col-md-4" onClick="javascript:cargar('operaciones')">
 		<h2 class="ui icon header">
-			<i class="car icon"></i>
+			<i class="road icon"></i>
 			<div class="content">
 				Operaciones
 				<div class="sub header">Gestione las incidencias, accidentes y demás sucesos de la vía.</div>
 			</div>
 		</h2>
 	</div><!-- Operaciones -->
+
+	<!-- Peajes -->
+	<div class="col-md-4" onClick="javascript:cargar('peajes')">
+		<h2 class="ui icon header">
+			<i class="car icon"></i>
+			<div class="content">
+				Peajes
+				<div class="sub header">Actualice los valores de recaudo y tráfico diarios.</div>
+			</div>
+		</h2>
+	</div><!-- Peajes -->
 
 	<!-- Indicadores -->
 	<div class="col-md-4" onClick="javascript:cargar('indicadores')">
@@ -45,6 +56,12 @@
                 // Se carga la interfaz
     			redireccionar("<?php echo site_url('operaciones'); ?>");
             break; // Operaciones
+
+			// Peajes
+            case "peajes":
+                // Se carga la interfaz
+    			redireccionar("<?php echo site_url('peajes'); ?>");
+            break; // Peajes
         } // switch tipo
 	} // cargar
 

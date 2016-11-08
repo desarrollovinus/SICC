@@ -4,7 +4,7 @@
 <script type="text/javascript">
 	$(function () {
 		// Arreglos de datos
-		var datos = ajax("<?php echo site_url('peaje/cargar'); ?>", {"tipo": "dias_mes", "anio": "<?php echo date('Y'); ?>", "mes": "<?php echo date('m') ?>", "peaje": "<?php echo $peaje; ?>"}, "JSON");
+		var datos = ajax("<?php echo site_url('peajes/cargar'); ?>", {"tipo": "dias_mes", "peaje": "<?php echo $peaje; ?>"}, "JSON");
 		
 		// Arreglos vacíos
 		var dias = [];

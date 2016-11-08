@@ -10,7 +10,7 @@ Operaciones inicio
     		"estado",
     		"Aplicación de Operaciones",
     		"Bienvenido (a)",
-    		"car"
+    		"road"
 		]);
 	}); // document.ready
 </script>

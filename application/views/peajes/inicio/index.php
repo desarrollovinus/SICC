@@ -7,6 +7,8 @@
 	</h2>
 </center>
 
+
+
 <div class="ui divider"></div>
 
 <!-- Tabla de acumulados -->
@@ -47,33 +49,25 @@
 		// Tráfico de Niquía
 		$("#niquia_trafico").load("<?php echo site_url('peaje_reportes/graficos'); ?>", {"tipo": "trafico", "peaje": "niquia"});
 
-		// Recaudo de Niquía
+		// // Recaudo de Niquía
 		$("#niquia_recaudo").load("<?php echo site_url('peaje_reportes/graficos'); ?>", {"tipo": "recaudo", "peaje": "niquia"});
-
 
 		// Tráfico de Trapiche
 		$("#trapiche_trafico").load("<?php echo site_url('peaje_reportes/graficos'); ?>", {"tipo": "trafico", "peaje": "trapiche"});
 
-		// Recaudo de Trapiche
+		// // Recaudo de Trapiche
 		$("#trapiche_recaudo").load("<?php echo site_url('peaje_reportes/graficos'); ?>", {"tipo": "recaudo", "peaje": "trapiche"});
 		
-
-
 		// Tráfico de Cabildo
 		$("#cabildo_trafico").load("<?php echo site_url('peaje_reportes/graficos'); ?>", {"tipo": "trafico", "peaje": "cabildo"});
 
-		// Recaudo de Cabildo
+		// // Recaudo de Cabildo
 		$("#cabildo_recaudo").load("<?php echo site_url('peaje_reportes/graficos'); ?>", {"tipo": "recaudo", "peaje": "cabildo"});
 
 		// Configuración de los botones (de esta manera entran desactivados)
 		botones();
 
-		// Se muestra el mensaje al pié, enviando el tipo, el título, la descripción y el ícono
-		mostrar_mensaje_pie([
-    		"estado",
-    		"Recaudo de peajes",
-    		"Consulte los valores de recaudo y tráfico para los peajes. Los gráficos son interactivos y se pueden activar o desactivar los ítems.",
-    		"car"
-		]);
+		// Se oculta la barra inferior
+		$("#cargador").hide();
 	}); // document.ready
 </script>
